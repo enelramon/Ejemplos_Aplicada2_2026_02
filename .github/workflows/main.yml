@@ -26,8 +26,10 @@ jobs:
     - name: Build, run unit tests, and capture results
       run: ./gradlew build test --no-daemon --stacktrace
 
-    - name: Unit tests results
-      uses: actions/upload-artifact@v4
+    - name: Test Report (Unit Tests)
+      if: always()
+      uses: dorny/test-reporter@v1
       with:
-        name: unit-tests-results
-        path: app/build/reports/tests/testDebugUnitTest/index.html
+        name: Unit Tests
+        path: app/build/test-results/testDebugUnitTest/TEST-*.xml
+        reporter: java-junit
