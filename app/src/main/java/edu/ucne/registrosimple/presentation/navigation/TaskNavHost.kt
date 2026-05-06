@@ -30,7 +30,11 @@ fun TaskNavHost(
         composable<Screen.TaskForm> {
             TaskFormScreen(
                 onBack = {
-                    navController.navigateUp()
+                    navController.navigate(Screen.TaskList) {
+                        popUpTo(Screen.TaskList) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
