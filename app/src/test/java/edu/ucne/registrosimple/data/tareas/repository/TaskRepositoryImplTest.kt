@@ -46,8 +46,8 @@ class TaskRepositoryImplTest {
         // Then
         assertEquals(0, result)
         coVerify { dao.upsert(any()) }
-        assertEquals("Nueva tarea", taskSlot.captured.descripcion)
-        assertEquals(30, taskSlot.captured.tiempo)
+        assertEquals(task.descripcion, taskSlot.captured.descripcion)
+        assertEquals(task.tiempo, taskSlot.captured.tiempo)
     }
 
     @Test
